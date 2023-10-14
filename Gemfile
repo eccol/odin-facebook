@@ -74,3 +74,5 @@ group :development, :test do
   gem "webdrivers"
   gem "faker"
 end
+
+gem "cssbundling-rails"
