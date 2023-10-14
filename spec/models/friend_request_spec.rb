@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe FriendRequest, type: :model do
-  let(:sending_user) { User.create }
-  let(:receiving_user) { User.create }
+  let(:sending_user) { User.create!(email: "a@a.a", password: "abcabc") }
+  let(:receiving_user) { User.create!(email: "b@b.b", password: "cbacba") }
 
   it "is valid with valid attributes" do
     friend_request = FriendRequest.new(sender: sending_user, recipient: receiving_user)
