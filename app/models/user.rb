@@ -6,4 +6,10 @@ class User < ApplicationRecord
 
   has_many :sent_friend_requests, foreign_key: "sender_id", class_name: "FriendRequest"
   has_many :received_friend_requests, foreign_key: "recipient_id", class_name: "FriendRequest"
+
+  def friends
+    (FriendRequest.where(sender: self).where(accepted: true).map(&:recipient) +
+      FriendRequest.where(recipient: self).where(accepted: true).map(&:sender))
+      .uniq
+  end
 end

@@ -4,5 +4,6 @@ class FriendRequest < ApplicationRecord
 
   def accept
     self.accepted = true
+    self.save!
   end
 end
