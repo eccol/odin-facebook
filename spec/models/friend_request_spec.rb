@@ -1,10 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe FriendRequest, type: :model do
+  let(:sending_user) { User.create }
+  let(:receiving_user) { User.create }
+
   it "is valid with valid attributes" do
-    user1 = User.create
-    user2 = User.create
-    friend_request = FriendRequest.new(sender: user1, recipient: user2)
+    friend_request = FriendRequest.new(sender: sending_user, recipient: receiving_user)
     expect(friend_request).to be_valid
   end
 
@@ -15,8 +16,18 @@ RSpec.describe FriendRequest, type: :model do
   end
 
   it "is not valid without a recipient" do
-    user = User.create
-    friend_request = FriendRequest.new(sender: user)
+    friend_request = FriendRequest.new(sender: sending_user)
     expect(friend_request).not_to be_valid
+  end
+
+  it "is not accepted immediately after creation" do
+    friend_request = FriendRequest.new(sender: sending_user, recipient: receiving_user)
+    expect(friend_request.accepted).to be false
+  end
+
+  it "can be accepted" do
+    friend_request = FriendRequest.new(sender: sending_user, recipient: receiving_user)
+    friend_request.accept
+    expect(friend_request.accepted).to be true
   end
 end
