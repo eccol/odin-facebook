@@ -10,8 +10,7 @@ RSpec.describe FriendRequest, type: :model do
   end
 
   it "is not valid without a sender" do
-    user = User.create
-    friend_request = FriendRequest.new(recipient: user)
+    friend_request = FriendRequest.new(recipient: receiving_user)
     expect(friend_request).not_to be_valid
   end
 
