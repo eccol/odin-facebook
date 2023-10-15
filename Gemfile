@@ -66,6 +66,7 @@ end
 
 # Devise for user management
 gem "devise", "~> 4.9"
+gem "warden"
 
 # For Rspec testing
 group :development, :test do
