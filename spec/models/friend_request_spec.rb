@@ -43,4 +43,9 @@ RSpec.describe FriendRequest, type: :model do
     friend_request2 = FriendRequest.new(sender: receiving_user, recipient: sending_user)
     expect(friend_request2).not_to be_valid
   end
+
+  it "cannot send friend request to self" do
+    friend_request = FriendRequest.new(sender: sending_user, recipient: sending_user)
+    expect(friend_request).not_to be_valid
+  end
 end
