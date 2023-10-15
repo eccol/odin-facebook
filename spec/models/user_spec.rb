@@ -1,19 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  let(:sending_user) { User.create!(email: "a@a.a", password: "abcabc") }
-  let(:receiving_user) { User.create!(email: "b@b.b", password: "cbacba") }
+  let(:sending_user) { User.create!(email: "c@c.c", password: "abcabc") }
+  let(:receiving_user) { User.create!(email: "d@d.d", password: "cbacba") }
+  let(:request) { FriendRequest.create(sender: sending_user, recipient: receiving_user) }
 
   context "#friends" do
-    it "returns accepted friend requests" do
-      request = FriendRequest.create(sender: sending_user, recipient: receiving_user)
-      request.accept
-      expect(sending_user.friends).to include(receiving_user)
+    it "does not return unaccepted requests" do
+    expect(sending_user.friends).not_to include(receiving_user)
     end
 
-    it "does not return unaccepted requests" do
-      request = FriendRequest.create(sender: sending_user, recipient: receiving_user)
-      expect(sending_user.friends).not_to include(receiving_user)
+    it "returns accepted friend requests" do
+      request.accept
+      expect(sending_user.friends).to include(receiving_user)
     end
   end
 end

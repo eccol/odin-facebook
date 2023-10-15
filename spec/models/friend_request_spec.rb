@@ -29,4 +29,18 @@ RSpec.describe FriendRequest, type: :model do
     friend_request.accept
     expect(friend_request.accepted).to be true
   end
+
+  it "is not valid if the sender already sent a request to the recipient" do
+    friend_request = FriendRequest.new(sender: sending_user, recipient: receiving_user)
+    friend_request.save
+    friend_request2 = FriendRequest.new(sender: sending_user, recipient: receiving_user)
+    expect(friend_request2).not_to be_valid
+  end
+
+  it "is not valid if the recipient already sent a request to the sender" do
+    friend_request = FriendRequest.new(sender: sending_user, recipient: receiving_user)
+    friend_request.save
+    friend_request2 = FriendRequest.new(sender: receiving_user, recipient: sending_user)
+    expect(friend_request2).not_to be_valid
+  end
 end
