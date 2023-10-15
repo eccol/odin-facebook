@@ -4,7 +4,7 @@ class FriendRequestsController < ApplicationController
     if request.save
       redirect_to users_path, notice: "Request sent!"
     else
-      redirect_to users_path, status: :unprocessable_entity, alert: "Request failed to send."
+      redirect_to users_path, alert: "Request failed to send."
     end
   end
 end
