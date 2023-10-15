@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :received_friend_requests, foreign_key: "recipient_id", class_name: "FriendRequest"
 
   has_many :posts
+  has_one :profile
 
   def friends
     (FriendRequest.where(sender: self).where(accepted: true).map(&:recipient) +
