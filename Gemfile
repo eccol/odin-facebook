@@ -71,6 +71,7 @@ gem "devise", "~> 4.9"
 group :development, :test do
   gem "rspec-rails"
   gem "capybara"
+  gem 'selenium-webdriver'
   gem "webdrivers"
   gem "faker"
 end
