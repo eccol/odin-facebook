@@ -10,7 +10,7 @@
     <h1>Your Friends</h1>
     <% @friends.each do |friend| %>
       <div class="friend">
-        <%= friend.profile.name %>
+        <%= link_to friend.profile.name, friend %>
       </div>
     <% end %>
   </div>

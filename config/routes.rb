@@ -3,6 +3,6 @@ Rails.application.routes.draw do
 
   root "posts#index"
   resources :posts
-  resources :users, only: [:index]
+  resources :users, only: [:index, :show]
   resources :friend_requests, only: [:create]
 end
