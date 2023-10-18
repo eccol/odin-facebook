@@ -1,9 +1,11 @@
 <div class="row">
   <div class="col">
-    <h1>Recent Posts</h1>
-    <% @posts.each do |post| %>
-      <%= render post %>
-    <% end %>
+    <h1>Posts</h1>
+    <%= turbo_frame_tag "new_post", src: new_post_path %>
+
+    <div id="posts">
+      <%= render @posts %>
+    </div>
   </div>
   
   <div class="col">
