@@ -22,7 +22,7 @@ class FriendRequest < ApplicationRecord
       errors.add(:sender, "missing")
       return
     end
-    if self.sender.pending_friends.include?(self.recipient)
+    if self.sender.pending_friends.include?(self.recipient) || self.sender.friends.include?(self.recipient)
       errors.add(:base, "Friend request already exists")
     end
   end
