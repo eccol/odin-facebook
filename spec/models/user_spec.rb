@@ -15,4 +15,9 @@ RSpec.describe User, type: :model do
       expect(sending_user.friends).to include(receiving_user)
     end
   end
+
+  it 'accepts attributes for profile' do
+    User.create!(email: 'user@internet.gov', password: '123456', profile_attributes: {name: "Gregory"})
+    expect(User.last.profile.name).to eq "Gregory"
+  end
 end
