@@ -68,13 +68,14 @@ end
 gem "devise", "~> 4.9"
 gem "warden"
 
-# For Rspec testing
+# For testing
 group :development, :test do
   gem "rspec-rails"
   gem "capybara"
   gem 'selenium-webdriver'
   gem "webdrivers"
   gem "faker"
+  gem "bullet"
 end
 
 gem "cssbundling-rails"
