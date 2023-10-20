@@ -1,6 +1,8 @@
 <%= turbo_frame_tag "new_post" do %>
-  <%= form_with model: @post do |f| %>
-    <%= f.text_area :content, placeholder: "What's going on?" %>
+<div data-controller="reset-form">
+  <%= form_with model: @post, data: {action: "turbo:submit-end->reset-form#reset"} do |f| %>
+    <%= f.text_area :content, placeholder: "What's going on?", data: {reset_form_target: "field"} %>
     <%= f.submit "Post" %>
   <% end %>
+</div>
 <% end %>
