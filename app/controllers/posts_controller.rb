@@ -21,8 +21,14 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    Post.find(params[:id]).destroy
-    redirect_to posts_path, notice: "Post deleted."
+    post = Post.find(params[:id])
+
+    if post.user == current_user
+      Post.find(params[:id]).destroy
+      redirect_to posts_path, notice: "Post deleted."
+    else
+      redirect_to posts_path, status: :unprocessable_entity
+    end
   end
 
   private
