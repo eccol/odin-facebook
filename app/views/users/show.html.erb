@@ -1,6 +1,9 @@
 <h1><%= @user.profile.name %></h1>
 
 <% if current_user.friends?(@user)%>
+<div class="city">Lives in <%= @user.profile.city %></div>
+<div class="birthday">Born <%= @user.profile.birthday.strftime('%B %-d, %Y') %></div>
+
 <h2>Recent Posts</h2>
 <%= render @posts %>
 
