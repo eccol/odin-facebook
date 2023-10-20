@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.where(user_id: current_user.friends.map(&:id))
+    @posts = Post.where(user_id: current_user.friends.map(&:id).append(current_user)).order(created_at: :desc)
     @friends = current_user.friends
   end
 
