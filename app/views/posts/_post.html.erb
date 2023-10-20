@@ -1,12 +1,16 @@
-<div class="card">
+<div class="card mt-3">
+  <div class="card-header d-flex">
+    <span class="me-auto"><%= post.user.profile.name %></span>
+    <span><%= post.created_at.strftime('%B %-d, %Y %l:%M %p') %></span>
+  </div>
   <div class="card-body">
     <div class="card-text">
-      <p><%= post.user.profile.name %></p>
-      <p><%= post.created_at.strftime('%B %-d, %Y %l:%M %p') %></p>
       <p><%= post.content %></p>
-      <% if post.user == current_user %>
-        <%= link_to post_path(post), data: {"turbo-method": :delete} do %> <i class="bi bi-trash"></i> <% end %>
-      <% end %>
     </div>
   </div>
+  <% if post.user == current_user %>
+  <div class="card-footer">
+    <%= link_to post_path(post), data: {"turbo-method": :delete} do %> <i class="bi bi-trash"></i> <% end %>
+  </div>
+  <% end %>
 </div>
