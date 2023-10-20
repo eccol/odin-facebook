@@ -4,6 +4,7 @@
       <p><%= post.user.profile.name %></p>
       <p><%= post.created_at.strftime('%B %-d, %Y %l:%M %p') %></p>
       <p><%= post.content %></p>
+      <%= link_to post_path(post), data: {"turbo-method": :delete} do %> <i class="bi bi-trash"></i> <% end %>
     </div>
   </div>
 </div>
