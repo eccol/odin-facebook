@@ -3,7 +3,19 @@
     <%= form_with url: friend_requests_path, method: :post do |form| %>
       <%= link_to user.profile.name, user %>
       <%= form.hidden_field :recipient_id, value: user.id %>
-      <%= form.submit "Send Friend Request" %>
+
+      <% if @friends.include?(user) %>
+        <span class="badge bg-primary">Friends!</span>
+      <% elsif @sent_requests.include?(user) %>
+        <span class="badge bg-info">Friend request sent.</span>
+      <% elsif @received_requests.include?(user) %>
+        <span>Put accept request form here.</span>
+      <% elsif user == current_user %>
+        <span class="badge bg-secondary">You!</span>
+      <% else %>
+        <%= form.submit "Send Friend Request" %>
+      <% end %>
+
     <% end %>
   <% end %>
 </div>

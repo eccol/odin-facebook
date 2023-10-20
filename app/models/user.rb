@@ -25,6 +25,14 @@ class User < ApplicationRecord
       .uniq
   end
 
+  def pending_sent_requests
+    FriendRequest.where(sender: self).where(accepted: false).map(&:recipient)
+  end
+
+  def pending_received_requests
+    FriendRequest.where(recipient: self).where(accepted: false).map(&:sender)
+  end
+
   # I am keeping these methods around in case they become useful
   # But they are not currently used and should be deleted later on if they stay that way
   def friends_ids
