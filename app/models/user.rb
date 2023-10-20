@@ -19,6 +19,10 @@ class User < ApplicationRecord
       .uniq
   end
 
+  def friends?(user)
+    friends.include?(user)
+  end
+
   def pending_friends
     (FriendRequest.where(recipient: self).where(accepted: false).map(&:sender) +
     FriendRequest.where(sender: self).where(accepted: false).map(&:recipient))
