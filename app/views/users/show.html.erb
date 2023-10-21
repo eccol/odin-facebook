@@ -1,11 +1,13 @@
 <h1><%= @user.profile.name %></h1>
 
-<% if @friendship && @friendship.accepted %>
-<div class="city">Lives in <%= @user.profile.city %></div>
-<div class="birthday">Born <%= @user.profile.birthday.strftime('%B %-d, %Y') %></div>
+<% if (@friendship && @friendship.accepted) || (@user == current_user) %>
+<% if @user.profile.city %><div class="city">Lives in <%= @user.profile.city %></div><% end %>
+<% if @user.profile.birthday %><div class="birthday">Born <%= @user.profile.birthday.strftime('%B %-d, %Y') %></div><% end %>
 
+<% unless @user == current_user %>
 <%= form_with url: friend_request_path(@friendship), method: :delete do |form| %>
   <%= form.submit "Delete Friend" %>
+<% end %>
 <% end %>
 
 <h2>Recent Posts</h2>
