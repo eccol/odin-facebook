@@ -9,7 +9,9 @@
       <% elsif @sent_requests.include?(user) %>
         <span class="badge bg-info">Friend request sent.</span>
       <% elsif @received_requests.include?(user) %>
-        <span>Put accept request form here.</span>
+        <%= form_with url: friend_request_path(FriendRequest.find_by(sender: user)), method: :patch do |form| %>
+          <%= form.submit "Accept Friend Request" %>
+        <% end %>
       <% elsif user == current_user %>
         <span class="badge bg-secondary">You!</span>
       <% else %>

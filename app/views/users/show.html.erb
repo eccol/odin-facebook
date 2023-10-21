@@ -13,6 +13,12 @@
 <h2>Recent Posts</h2>
 <%= render @posts %>
 
+<% elsif current_user.pending_received_requests.include?(@user) %>
+<p><%= @user.profile.name %> sent you a friend request.</p>
+<%= form_with url: friend_request_path(@friendship), method: :patch do |form| %>
+  <%= form.submit "Accept Friend Request" %>
+<% end %>
+
 <% else %>
 <p>You must be friends with <%= @user.profile.name %> to see their profile.</p>
 
