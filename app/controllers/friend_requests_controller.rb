@@ -13,4 +13,10 @@ class FriendRequestsController < ApplicationController
     request.accept
     redirect_to user_path(request.sender.id), notice: "You are now friends with #{request.sender.profile.name}"
   end
+
+  def destroy
+    request = FriendRequest.find(params[:id])
+    request.destroy
+    redirect_to users_path
+  end
 end

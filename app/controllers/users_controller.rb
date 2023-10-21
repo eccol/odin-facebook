@@ -8,6 +8,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.includes(:profile).find(params[:id])
+    @friendship = FriendRequest.find_by(sender: current_user, recipient: @user) ||
+      FriendRequest.find_by(sender: @user, recipient: current_user)
     @posts = @user.posts
   end
 end
