@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.includes(:user).where(user_id: current_user.friends.map(&:id).append(current_user)).order(created_at: :desc)
+    @posts = Post.includes(:user).includes(:comments).where(user_id: current_user.friends.map(&:id).append(current_user)).order(created_at: :desc)
     @friends = current_user.friends
   end
 

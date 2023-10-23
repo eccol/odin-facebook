@@ -8,9 +8,21 @@
       <p><%= post.content %></p>
     </div>
   </div>
-  <% if post.user == current_user %>
-  <div class="card-footer">
-    <%= link_to post_path(post), data: {"turbo-method": :delete} do %> <i class="bi bi-trash"></i> <% end %>
+  
+  <div class="card-footer d-flex">
+    <i class="bi bi-heart mx-2"></i>
+    <i class="bi bi-chat mx-2"></i>
+    <% if post.user == current_user %>
+    <span class="owner-tools ms-auto">
+      <%= link_to post_path(post), data: {"turbo-method": :delete} do %><i class="bi bi-trash"></i><% end %>
+    </span>
+    <% end %>
   </div>
-  <% end %>
+
+<% post.comments.each do |c| %>
+  <div class="card-body">
+    <%= c.user.profile.name %>: <%= c.content %>
+  </div>
+<% end %>
+
 </div>

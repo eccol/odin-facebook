@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :received_friend_requests, foreign_key: "recipient_id", class_name: "FriendRequest", dependent: :destroy
 
   has_many :posts, dependent: :destroy
+  has_many :comments
   has_one :profile, dependent: :destroy
 
   accepts_nested_attributes_for :profile
