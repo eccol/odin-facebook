@@ -19,10 +19,10 @@
     <% end %>
   </div>
 
-<% post.comments.each do |c| %>
-  <div class="card-body">
-    <%= c.user.profile.name %>: <%= c.content %>
-  </div>
-<% end %>
+<div id="comments">
+  <%= render post.comments.includes(:user) %>
+</div>
+
+<%= turbo_frame_tag "new_comment", src: new_comment_path(post_id: post.id) %>
 
 </div>
