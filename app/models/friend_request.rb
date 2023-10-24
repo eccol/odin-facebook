@@ -5,12 +5,18 @@ class FriendRequest < ApplicationRecord
   validate :cannot_friend_self
   validate :does_not_exist, on: :create
 
+  after_create :send_notification
+
   def accept
     self.accepted = true
     self.save!
   end
 
   private
+  def send_notification
+    self.recipient.notifications.create(notification_type: "friend_request", source_user: self.sender)
+  end
+
   def cannot_friend_self
     errors.add(:recipient_id, "Cannot friend self") if sender_id == recipient_id
   end

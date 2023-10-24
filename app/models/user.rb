@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :comments
   has_many :likes
   has_one :profile, dependent: :destroy
+  has_many :notifications
+  has_many :triggered_notifications, foreign_key: :source_user_id
 
   accepts_nested_attributes_for :profile
 
