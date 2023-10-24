@@ -1,0 +1,2 @@
+<% if @user.profile.city %><div class="city">Lives in <%= @user.profile.city %></div><% end %>
+<% if @user.profile.birthday %><div class="birthday">Born <%= @user.profile.birthday.strftime('%B %-d, %Y') %></div><% end %>

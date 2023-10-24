@@ -9,9 +9,14 @@
         <li class="nav-item"><a href="<%= posts_path %>" class="nav-link <%= "active" if controller.controller_name == "posts" %>">Posts</a></li>
         <li class="nav-item"><a href="<%= users_path %>" class="nav-link <%= "active" if controller.controller_name == "users" %>">User Directory</a></li>
       </ul>
-      <%= form_with url: destroy_user_session_path, method: :delete, class: "nav-item" do |f| %>
-        <%= f.submit "Log Out", class: "nav-link text-white" %>
-      <% end %>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a href="<%= profile_path %>" class="nav-link <%= "active" if controller.controller_name == "profiles" %>">Your Profile</a></li>
+      <li class="nav-item">
+        <%= form_with url: destroy_user_session_path, method: :delete, class: "nav-item" do |f| %>
+          <%= f.submit "Log Out", class: "nav-link text-white" %>
+        <% end %>
+      </li>
+      </ul>
     </div>
   </div>
 </nav>

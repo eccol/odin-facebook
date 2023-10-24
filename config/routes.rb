@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   resources :comments, only: [:new, :create, :destroy]
   post 'posts/[:id]/like', to: 'posts#like', as: 'like_post'
   resources :users, only: [:index, :show]
+  resource :profile, only: [:edit, :show, :update]
   resources :friend_requests, only: [:create, :update, :destroy]
 end

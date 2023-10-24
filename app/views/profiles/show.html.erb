@@ -1,0 +1,6 @@
+<div class="d-flex">
+  <h1 class="me-auto"><%= @user.profile.name %></h1>
+  <%= link_to "Edit Profile", edit_profile_path %>
+</div>
+
+<%= render "profile", locals: {user: @user} %>
