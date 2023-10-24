@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.includes(:user).where(user_id: current_user.friends.map(&:id).append(current_user)).order(created_at: :desc)
     @friends = current_user.friends
-    @notifications = current_user.notifications
+    @notifications = current_user.notifications.includes(:source_user).order(created_at: :desc)
   end
 
   def new
