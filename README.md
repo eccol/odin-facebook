@@ -6,20 +6,20 @@ I think I will use Bootstrap, might as well learn that too.
 
 The goal is to build a Facebook clone with the following features:
 
-* Users can send friend requests
-* Users must accept friend requests to become friends
-* Friend requests appear in a notification section
-* Users can create posts
-* Users can like posts
-* Users can comment on posts
-* The homepage displays recent posts from the current user and their friends
-* Users can edit their profile information
-* The user's profile page displays profile information and posts
-* A user index page lists users so friend requests can be sent
+* ~~Users can send friend requests~~ DONE
+* ~~Users must accept friend requests to become friends~~ DONE
+* Friend requests appear in a notification section (Works but is ugly, will improve)
+* ~~Users can create posts~~ DONE
+* Users can like posts (Works but does not display yet)
+* Users can comment on posts (Works but is ugly, will improve)
+* ~~The homepage displays recent posts from the current user and their friends~~ DONE
+* Users can edit their profile information (Works but needs DRYing up)
+* The user's profile page displays profile information and posts (Works for general user pages, not the profile page)
+* A user index page lists users so friend requests can be sent (Works but is ugly, will improve)
 
 After those, I will work on implementing these features:
 
 * Posts can be text or images
-* Users can upload profile pictures
+* Users can upload profile pictures (Works but does not display anywhere yet)
 * Users can sign in with a real Facebook account
 * Welcome emails and friend request notification emails
