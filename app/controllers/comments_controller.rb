@@ -16,6 +16,15 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+
+    respond_to do |format|
+      format.turbo_stream { render turbo_stream: turbo_stream.remove(@comment)}
+    end
+  end
+
   private
   def comment_params
     params.require(:comment).permit(:content, :post_id, :user_id)
