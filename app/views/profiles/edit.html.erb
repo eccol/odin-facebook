@@ -1,20 +1,23 @@
 <h1>Edit Profile</h1>
 
 <%= form_for @user.profile do |profile_form| %>
-        <div class="field">
-          <%= profile_form.label :name %><span class="badge bg-warning">Required</span><br />
-          <%= profile_form.text_field :name %>
-        </div>
-        <div class="field">
-          <%= profile_form.label :birthday %><br />
-          <%= profile_form.date_field :birthday %>
-        </div>
-        <div class="field">
-          <%= profile_form.label :city %><br />
-          <%= profile_form.text_field :city %>
-        </div>
-        <div class="field">
-          <%= profile_form.submit "Update" %>
-        </div>
-      <% end %>
-    </div>
+<div class="field">
+  <%= profile_form.label :avatar %>
+  <%= profile_form.file_field :avatar %>
+</div>
+<div class="field">
+  <%= profile_form.label :name %><span class="badge bg-warning">Required</span><br />
+  <%= profile_form.text_field :name %>
+</div>
+<div class="field">
+  <%= profile_form.label :birthday %><br />
+  <%= profile_form.date_field :birthday %>
+</div>
+<div class="field">
+  <%= profile_form.label :city %><br />
+  <%= profile_form.text_field :city %>
+</div>
+<div class="field">
+  <%= profile_form.submit "Update" %>
+</div>
+<% end %>
