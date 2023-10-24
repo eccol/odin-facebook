@@ -16,13 +16,13 @@ consumer.subscriptions.create("NotificationsChannel", {
   appendLine(data) {
     const html = this.createLine(data)
     const element = document.querySelector('.notifications')
-    element.insertAdjacentHTML("beforeend", html)
+    element.insertAdjacentHTML("afterbegin", html)
   },
 
   createLine(data) {
     return `
     <div class="notification">
-    ${data[body]}
+    ${data["body"]}
     </div>
     `
   }

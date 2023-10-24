@@ -6,7 +6,7 @@ class Like < ApplicationRecord
 
   private
   def send_notification
-    self.post.user.notifications.create(notification_type: "like", source_user: self.user, post: self.post)
-    NotificationsChannel.broadcast_to(self.post.user, body: "bnotufc" )
+    notification = self.post.user.notifications.create(notification_type: "like", source_user: self.user, post: self.post)
+    NotificationsChannel.broadcast_to(self.post.user, body: notification.to_text )
   end
 end
