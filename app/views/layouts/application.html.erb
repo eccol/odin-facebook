@@ -12,7 +12,7 @@
   </head>
 
   <body>
-    <% unless %w[registrations sessions].include?(controller.controller_name) %><%= render "layouts/navbar" %><% end %>
+    <% if current_user %><%= render "layouts/navbar" %><% end %>
 
     <%# Flash messages for Devise %>
     <% if notice %>
