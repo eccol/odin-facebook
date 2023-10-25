@@ -1,19 +1,21 @@
-<div class="row p-2">
-  <div class="col">
-    <h1>Posts</h1>
-    <%= turbo_frame_tag "new_post", src: new_post_path %>
-
-    <div id="posts">
-      <%= render @posts %>
-    </div>
-  </div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Posts</h1>
+      <%= turbo_frame_tag "new_post", src: new_post_path %>
   
-  <div class="col">
-    <h1>Your Friends</h1>
-    <% @friends.each do |friend| %>
-      <div class="friend">
-        <%= link_to friend.profile.name, friend %>
+      <div id="posts">
+        <%= render @posts %>
       </div>
-    <% end %>
+    </div>
+  
+    <div class="col">
+      <h1>Your Friends</h1>
+      <% @friends.each do |friend| %>
+        <div class="friend">
+          <%= link_to friend.profile.name, friend %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>

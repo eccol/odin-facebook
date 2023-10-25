@@ -81,3 +81,5 @@ end
 gem 'cssbundling-rails'
 
 gem 'rmagick'
+
+gem 'sassc-rails'
