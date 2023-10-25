@@ -10,6 +10,7 @@
         <li class="nav-item"><a href="<%= users_path %>" class="nav-link <%= "active" if controller.controller_name == "users" %>">User Directory</a></li>
       </ul>
       <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a href="#notifications" class="nav-link" data-bs-toggle="offcanvas">Notifications</a></li>
         <li class="nav-item"><a href="<%= profile_path %>" class="nav-link <%= "active" if controller.controller_name == "profiles" %>">Your Profile</a></li>
       <li class="nav-item">
         <%= form_with url: destroy_user_session_path, method: :delete, class: "nav-item" do |f| %>
@@ -20,3 +21,13 @@
     </div>
   </div>
 </nav>
+
+<div class="offcanvas offcanvas-end" id="notifications">
+  <div class="offcanvas-header">
+    <h1>Notifications</h1>
+    <button class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="notifications"><%= render @notifications %></div>
+  </div>
+</div>
