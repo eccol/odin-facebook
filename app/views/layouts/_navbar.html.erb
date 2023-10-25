@@ -28,6 +28,6 @@
     <button class="btn-close" data-bs-dismiss="offcanvas"></button>
   </div>
   <div class="offcanvas-body">
-    <div class="notifications"><%= render @notifications %></div>
+    <div class="notifications"><%= render current_user.notifications.all %></div>
   </div>
 </div>
