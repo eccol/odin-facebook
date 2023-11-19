@@ -78,6 +78,10 @@ group :development, :test do
   gem 'webdrivers'
 end
 
+group :development do
+  gem 'letter_opener'
+end
+
 gem 'cssbundling-rails'
 
 gem 'rmagick'
