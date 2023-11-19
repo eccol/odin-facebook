@@ -20,6 +20,6 @@ The goal is to build a Facebook clone with the following features:
 After those, I will work on implementing these features:
 
 * Posts can be text or images
-* Users can upload profile pictures (Works but does not display anywhere yet)
+* Users can upload profile pictures (The button is there but needs a lot more work)
 * Users can sign in with a real Facebook account
-* Welcome emails and friend request notification emails
+* ~~Welcome emails and friend request notification emails~~ DONE the bare minimum
