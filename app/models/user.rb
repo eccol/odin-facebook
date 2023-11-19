@@ -16,6 +16,8 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :profile
 
+  after_create :send_welcome_email
+
   def friends
     # Returns an array of User objects the user has accepted friend requests with
     (FriendRequest.where(sender: self).where(accepted: true).map(&:recipient) +
@@ -52,4 +54,11 @@ class User < ApplicationRecord
     # Returns an ActiveRecord_Relation object of accepted friend requests involving the user
     FriendRequest.where("sender_id = :user_id OR recipient_id = :user_id", user_id: self.id).where(accepted: true)
   end
+
+  private
+
+  def send_welcome_email
+    UserMailer.welcome_email(self).deliver
+  end
+
 end
