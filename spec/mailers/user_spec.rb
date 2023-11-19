@@ -10,6 +10,6 @@ RSpec.describe UserMailer, type: :mailer do
     user_a = User.create!(email: "a@a.a", password: "123456")
     user_b = User.create!(email: "b@b.b", password: "123456")
     FriendRequest.create!(sender: user_a, recipient: user_b)
-    expect { UserMailer.friend_request_email(user_b).deliver_now }.to change { ActionMailer::Base.deliveries.count }.by(1)
+    expect { UserMailer.with(sender: user_a, recipient: user_b).friend_request_email.deliver_now }.to change { ActionMailer::Base.deliveries.count }.by(1)
   end
 end
