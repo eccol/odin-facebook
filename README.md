@@ -22,4 +22,4 @@ After those, I will work on implementing these features:
 * Posts can be text or images
 * Users can upload profile pictures (Works but does not display anywhere yet)
 * Users can sign in with a real Facebook account
-* Welcome emails and friend request notification emails
+* ~~Welcome emails and friend request notification emails~~ DONE the bare minimum
